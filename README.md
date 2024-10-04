@@ -1,41 +1,59 @@
-# MOVIE APP USING TMDB
+# Instacart
 
 ## Overview
-* This is an updated and better version of my movie app, where I only had 10 personal movies, This app fetches data from the TMDB API to show information about movies. This App also uses another Api that allows the user to send voice command to the app and the app will do it. 
+* Instacart is a grocery delivery platform where customers can place a grocery order and have it delivered to them, similar to how Uber Eats and Door Dash work. This particular dataset was publicly released by Instacart in 2017 for a Kaggle competition.
 
-### Question/Commands you can ask the app and the app will give you an answer or action.
 
-1. What does this app do?
-2. Give the command [go to] "pick a genre/category"
-3. Give the command "Change screen Mode" 
-4. More command and functionalities to come... 
+### Task:
+* To clean up the data and prepare a report that gives insight into the shopping habits of Instacart customers. After answering each question, there is a brief explanation of my results in a markdown cell of my Jupyter notebook.
 
-### Prerequisites
-* You need to create an account and get an API key in the MovieDatabase Api [Follow the link -> ](https://developers.themoviedb.org/3)
+### Visualizations:
+* This project requires to make plots that communicate my results.
 
 ### Functionality
 
-* It allows the user to click on a specific Genre and the app fetches movies according to that Genre. 
-* Once the user clicks on a specific movie, the app will display information about the movie, from reviews to the cast. And according to the specific movie clicked the User will be able to see recommended movies that are similar to the clicked one. 
-* You can also ask the app 
+* There are five tables in the dataset, and I used all of them to do my data preprocessing and EDA. Below is a data dictionary that lists the columns in each table and describes that data that hold.
 
-### Images
-![Image](src/Img/darkmode.png)
-![Image](src/Img/lightmode.png )
-![Image](src/Img/infolight.png )
-![Image](src/Img/infodark.png )
+### Data dictionary
+* instacart_orders.csv: each row corresponds to one order on the Instacart app
 
-### Technologies
-* To build this app latest technologies were used, using React hooks and Redux for state management. As for Css this app uses Material UI for some parts, and the most using css grid/flex. 
+- 'order_id': ID number that uniquely identifies each order
+- 'user_id': ID number that uniquely identifies each customer account
+- 'order_number': the number of times this customer has placed an order
+- 'order_dow': day of the week that the order placed (which day is 0 is uncertain)
+- 'order_hour_of_day': hour of the day that the order was placed
+- 'days_since_prior_order': number of days since this customer placed their previous order
 
-- React JS
-- React Router
-- Redux, Redux-Thunk
-- MaterialUI
-- SCSS modules
+* products.csv: each row corresponds to a unique product that customers can buy
 
+- 'product_id': ID number that uniquely identifies each product
+- 'product_name': name of the product
+- 'aisle_id': ID number that uniquely identifies each grocery aisle category
+- 'department_id': ID number that uniquely identifies each grocery department category
 
-### Installing 
-* Clone the Repo and run npm install and npm run to run on localhost
+* order_products.csv: each row corresponds to one item placed in an order
 
-[Click here to see live Version --> ](https://newmovies.netlify.app)
+- 'order_id': ID number that uniquely identifies each order
+- 'product_id': ID number that uniquely identifies each product
+- 'add_to_cart_order': the sequential order in which each item was placed in the cart
+- 'reordered': 0 if the customer has never ordered this product before, 1 if they have
+
+* aisles.csv
+
+- 'aisle_id': ID number that uniquely identifies each grocery aisle category
+- 'aisle': name of the aisle
+
+* departments.csv
+
+- 'department_id': ID number that uniquely identifies each grocery department category
+- 'department': name of the department
+
+### Steps:
+1. Open files.
+2. Preprocess the data.
+3. Analysis:
+   - How many items do people typically buy in one order? What does the distribution look like?
+   - What are the top 20 items that are reordered most frequently (display their names and product IDs)?
+   - For each product, what proportion of its orders are reorders (I created a table with columns for the product ID, product name, and reorder proportion)?
+   - For each customer, what proportion of their products ordered are reorders?
+   - What are the top 20 items that people put in their carts first (displayed the product IDs, product names, and number of times they were the first item added to the cart)?
